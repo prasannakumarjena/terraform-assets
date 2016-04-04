@@ -5,6 +5,8 @@ variable "amis" {
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "cluster_id" {}
+variable "kube_user" {}
+variable "kube_pass" {}
 variable "ssh_key_name" {
   default = "gossamer-kube-admin"
 }
@@ -21,5 +23,3 @@ variable "availability_zone" {}
 variable "s3_bucket" {
   default = "kubernetes-1-1-7-artifacts"
 }
-variable "kube_user" {}
-variable "kube_pass" {}

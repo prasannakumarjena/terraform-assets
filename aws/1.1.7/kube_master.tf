@@ -16,6 +16,8 @@ resource "aws_instance" "kube_master" {
   private_ip = "172.20.0.9"
   user_data = "${template_file.master_user_data.rendered}"
   key_name = "${var.ssh_key_name}"
+  kube_user = "${var.kube_user}"
+  kube_pass = "${var.kube_pass}"
   vpc_security_group_ids = ["${aws_security_group.kubernetes_sg.id}"]
   iam_instance_profile = "kubernetes-master"
   ebs_block_device = {
