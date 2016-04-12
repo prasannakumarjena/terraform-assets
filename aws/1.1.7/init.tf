@@ -8,7 +8,7 @@ variable "cluster_id" {}
 variable "kube_user" {}
 variable "kube_pass" {}
 variable "ssh_key_name" {
-  default = "gossamer-kube-admin"
+  default = "kube-admin"
 }
 variable "instance_class" {
   default = "m4"
