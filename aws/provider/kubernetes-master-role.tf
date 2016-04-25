@@ -36,9 +36,7 @@ resource "aws_iam_role" "kubernetes-master" {
   "Statement": [
     {
       "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
+      "Principal": {"AWS": "*"},
       "Effect": "Allow",
       "Sid": ""
     }
