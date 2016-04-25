@@ -41,13 +41,17 @@ resource "aws_iam_role" "kubernetes-minion" {
   "Statement": [
     {
       "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
+      "Principal": {"AWS": "*"},
       "Effect": "Allow",
       "Sid": ""
     }
   ]
 }
 EOF
+}
+
+resource "aws_iam_instance_profile" "kubernetes-minion" {
+    name  = "kubernetes-minion"
+    path  = "/"
+    roles = ["${aws_iam_role.kubernetes-minion.name}"]
 }
