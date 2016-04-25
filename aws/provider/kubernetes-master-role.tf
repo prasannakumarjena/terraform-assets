@@ -29,6 +29,7 @@ EOF
 
 resource "aws_iam_role" "kubernetes-master" {
     name = "kubernetes-master"
+    path = "/"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",

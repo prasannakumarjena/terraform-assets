@@ -34,6 +34,7 @@ EOF
 
 resource "aws_iam_role" "kubernetes-minion" {
     name = "kubernetes-minion"
+    path = "/"
     assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
