@@ -44,3 +44,9 @@ resource "aws_iam_role" "kubernetes-master" {
 }
 EOF
 }
+
+resource "aws_iam_instance_profile" "kubernetes-master" {
+    name  = "kubernetes-master"
+    path  = "/"
+    roles = ["${aws_iam_role.kubernetes-master.name}"]
+}
