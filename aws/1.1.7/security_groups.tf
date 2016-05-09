@@ -33,7 +33,14 @@ resource "aws_security_group" "kubernetes_sg" {
         from_port = 30000
         to_port = 40000
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = ["${aws_security_group.elb_sg.id}"]
+    }
+
+    ingress {
+        from_port = 10250
+        to_port = 10250
+        protocol = "tcp"
+        cidr_blocks = ["${aws_security_group.elb_sg.id}"]
     }
 
     vpc_id = "${aws_vpc.kube_cluster.id}"
@@ -57,6 +64,13 @@ resource "aws_security_group" "elb_sg" {
     egress {
         from_port = 30000
         to_port = 40000
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port = 10250
+        to_port = 10250
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
